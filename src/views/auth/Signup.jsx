@@ -61,7 +61,7 @@ const Signup = () => {
   const handleProfileImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      setProfileImage(URL.createObjectURL(file)); // Create an object URL for the selected file
+      setProfileImage(URL.createObjectURL(file)); 
     }
   };
 
@@ -163,15 +163,16 @@ const Signup = () => {
                 <span><CgGenderFemale /></span>
                 Select Gender
               </label>
-              <select
-                {...register("gender")}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              >
-                <option value="">Select</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                <option value="other">Other</option>
-              </select>
+              <div className="option-one">
+                <input defaultChecked="true" {...register("gender")} type="radio" id='male' />
+              </div>
+               <div className="option-one">
+                <input  {...register("gender")}  type="radio" id='female' />
+              </div>
+               <div className="option-one">
+                <input {...register("gender")}  type="radio" id='other' />
+              </div>
+             
               {errors.gender && (
                 <p className="text-red-500 text-sm mt-1">{errors.gender.message}</p>
               )}
