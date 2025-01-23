@@ -67,7 +67,7 @@ const Signup = () => {
 
   return (
     <div className="signup-wrapper p-5 flex justify-center items-center ">
-      <div className="signup-container max-w-4xl w-full p-6 bg-white rounded-lg shadow-md flex h-[88vh] overflow-auto">
+      <div className="signup-container max-w-4xl w-full p-6 bg-white rounded-lg shadow-md flex h-[89vh] overflow-auto">
         
         {/* Left Section: Profile Image Showcase */}
         <div className="profile-image-section w-1/3 flex justify-center items-start p-4">
