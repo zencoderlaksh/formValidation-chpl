@@ -30,17 +30,7 @@ const Signup = () => {
   const navigate = useNavigate();
 
   const finalSubmission = (data) => {
-    const formData = new FormData();
-    formData.append("firstName", data.firstName);
-    formData.append("lastName", data.lastName);
-    formData.append("email", data.email);
-    formData.append("mobileNo", data.mobileNo);
-    formData.append("gender", data.gender);
-    formData.append("hobbies", data.hobbies);
-    formData.append("address", data.address);
-    if (profileImage) formData.append("profile", profileImage);
-
-    console.log("Form submitted!", formData);
+    console.log("Form submitted!", data);
 
     toast.success("Signup Successful!", {
       duration: 4000,
@@ -88,7 +78,7 @@ const Signup = () => {
           </div>
           <form onSubmit={handleSubmit(finalSubmission, handleValidationErrors)}>
 
-            {/* First Name */}
+           
             <div className="mb-4">
               <label htmlFor="fname" className="block text-gray-700 font-medium mb-2 flex items-center gap-2">
                 <span><MdOutlineDriveFileRenameOutline /></span>
@@ -164,13 +154,13 @@ const Signup = () => {
                 Select Gender
               </label>
               <div className="option-one">
-                <input defaultChecked="true" {...register("gender")} type="radio" id='male' />
+                <input name='male' defaultChecked="true" value="male" {...register("gender")} type="radio" id='male' />
               </div>
                <div className="option-one">
-                <input  {...register("gender")}  type="radio" id='female' />
+                <input className='text-black' name='female'  value="female" {...register("gender")}  type="radio" id='female' />
               </div>
                <div className="option-one">
-                <input {...register("gender")}  type="radio" id='other' />
+                <input name='other' {...register("gender")} value="other"  type="radio" id='other' />
               </div>
              
               {errors.gender && (
