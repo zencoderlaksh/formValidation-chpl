@@ -5,6 +5,7 @@ import { signupSchema } from '../../utils/validation/SignupValidation';
 import { useNavigate } from 'react-router-dom';
 import toast from "react-hot-toast";
 import ColorMultiSelect from '../../utils/multiselect/ReactMultiSelect';
+import Particles from "react-tsparticles";
 
 const Signup = () => {
   const {

@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Add to your global CSS or the Signup page styles */
+.signup-wrapper {
+    position: relative;
+    z-index: 1;
+    /* Ensure it's above the particles */
+    padding: 2rem;
+    background-color: rgba(255, 255, 255, 0.8);
+    /* Light background for the form */
+    border-radius: 10px;
+}
