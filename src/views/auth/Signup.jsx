@@ -13,6 +13,11 @@ import { MdEmail } from "react-icons/md";
 import { MdOutlineDriveFileRenameOutline } from "react-icons/md";
 import { CgGenderFemale } from "react-icons/cg";
 import { CgProfile } from "react-icons/cg";
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { Controller } from "react-hook-form";
+
 
 
 
@@ -22,8 +27,12 @@ const Signup = () => {
     handleSubmit,
     formState: { errors },
     setValue,
+    control,
   } = useForm({
     resolver: zodResolver(signupSchema),
+     defaultValues: {
+      dateOfBirth: null,
+    },
   });
 
   const [profileImage, setProfileImage] = useState(null);
@@ -96,8 +105,8 @@ const Signup = () => {
               )}
             </div>
 
-            {/* Last Name */}
-            <div className="mb-4">
+            
+             <div className="mb-4">
               <label htmlFor="lname" className="block text-gray-700 font-medium mb-2 flex items-center gap-2">
                 <span><MdOutlineDriveFileRenameOutline /></span>
                 Last Name
@@ -112,6 +121,33 @@ const Signup = () => {
                 <p className="text-red-500 text-sm mt-1">{errors.lastName.message}</p>
               )}
             </div>
+            {/* Date of Birth */}
+          <div className="mb-4">
+          <label htmlFor="dateOfBirth" className="block text-gray-700 font-medium mb-2 flex items-center gap-2">
+            <MdOutlineDriveFileRenameOutline />
+            Date of Birth
+          </label>
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <Controller
+              name="dateOfBirth"
+            control={control}
+            render={({ field }) => (
+              <DatePicker
+                {...field}
+                onChange={(date) => field.onChange(date)} // Pass dayjs object directly
+                slotProps={{
+                  textField: {
+                    className: "border p-2 w-full", // Add your custom styles
+                  },
+                }}
+              />
+      )}
+    />
+  </LocalizationProvider>
+  {errors.dateOfBirth && (
+    <p className="text-red-500 text-sm mt-1">{errors.dateOfBirth.message}</p>
+  )}
+</div>
 
             {/* Email */}
             <div className="mb-4">
